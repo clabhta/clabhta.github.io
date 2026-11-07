@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+  Updates for JPN Fall 2024
+  FALL2024ID7794
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Professional License Visualisations">
+  <meta property="og:description" content="Exploring the dist. of professional licenses and their corresponding statuses using UIUC iSchool data from Fall 2022.">
+  <meta property="og:image" content="https://media.tenor.com/8RcIoWTKYR4AAAAe/scuze-corgi.png">
+
+  <title>Professional License Visualisations</title>
+  <meta name="description" content="Exploring the dist. of professional licenses and their corresponding statuses using UIUC iSchool data from Fall 2022.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>IS445 Jekyll Template</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <p>
+IS445 HW5.1 Submission.<br />
+Data is from Fall 2022.<br />
+Original Dataset:
+<a href="https://github.com/UIUC-iSchool-DataViz/is445_data/raw/main/licenses_fall2022.csv">licenses_fall2022.csv</a><br />
+Python Notebook:
+<a href="https://github.com/clabhta/clabhta.github.io/blob/main/python_notebooks/licenses.ipynb" target="_blank">licenses.ipynb</a>
+</p>
+<h2>15 Most Common License Descriptions</h2>
+<div id="licenses_chart1"></div>
+<p>
+My first chart examines the dist. of professional licenses across the 15 most common license descriptions in the Fall 2022 dataset. I chose a horiz. bar chart to make comparisons between the different categories easier, especially given the length of some license descriptions. The x-axis uses quantitative encoding to represent the number of licenses, while the y-axis uses nominal encoding to distinguish between license categories. I chose purple (my favourite colour) for the bars, although it doesn't represent any additional variable in this visualisation. Regarding data transformations, I used Pandas to count the occurrences of each license desc., selected the most common categories, and sorted them in descending order. The visualisation also includes tooltips displaying the license desc. and its corresponding count, allowing users to examine individual categories more precisely. Notably, permanent employee registrations and licensed cosmetologists account for a substantial majority of the records represented.
+</p>
+<h2>License Descriptions by Status</h2>
+<div id="licenses_chart2"></div>
+<p>
+My second chart examines the dist. of professional licenses across different license statuses, using the same 15 license descriptions from the first visualisation. I again chose a horiz. bar chart, using quantitative encoding for the number of licenses and nominal encoding for their descriptions, while maintaining the purple colouring for consistency. Regarding data transformations, I filtered the original dataset to include only the 15 most common descriptions, before using Altair to count the records associated with each status. Unlike the first chart, this visualisation includes a dropdown menu allowing users to select a particular license status, such as 'ACTIVE' or 'NOT RENEWED'. I chose this interactivity to allow users to examine how the dist. changes between statuses, rather than displaying them all simultaneously. However, I noticed a limitation when selecting statuses with relatively few records, such as 'CLOSED'. Given that Altair adjusts the axes based on the data being displayed, the remaining bars can appear disproportionately large. Although the actual counts remain unchanged, this could misrepresent the individual counts and differences between statuses if users don't pay attention to the axis values.
+</p>
+
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+<script>
+  vegaEmbed('#licenses_chart1', '/assets/licenses_chart1.json');
+  vegaEmbed('#licenses_chart2', '/assets/licenses_chart2.json');
+</script>
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>A. P. Corgi</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:username@domain.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/jnaiman"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.twitter.com/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#1da1f2'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-twitter fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.youtube.com/your_channel_name"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#ff0000'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-youtube fa-1x"></i>
+    </a>
+
+</div>
+
+  Theme by <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a> and <a href="https://github.com/4dcu-be/4dcu.be">4dcu.be</a>.
+
+  
+<!--<small id="attribution">
+    theme <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a>
+  </small>
+-->
+
+</footer>
+
+
+
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+<!--
+end of checks! JPN
+-->
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
